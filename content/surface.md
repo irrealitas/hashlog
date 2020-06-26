@@ -1,1 +1,1 @@
-Introibo *ad* altare **Dei**.
+Tarentum, sir.
