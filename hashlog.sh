@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MENULEFT="hashlog"
+MENULEFT="My log of (h)ashes"
 MENURIGHT="`cat content/surface.md`"
 FILENAME="hashlog"
-TAGS="hello.*"
+TAGS="log.*"
 REPO="https://gitlab.com/transdialectique/transdialectique.gitlab.io"
 
 for arg in "$@"; do
@@ -28,19 +28,19 @@ for arg in "$@"; do
     <main class="container">
     <div class="text text--menu">
       <button class="btn hash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-      <div class="text__container text__container--left">
-        <div class="text__subject" style="display: none;">
+      <div class="menu text__container text__container--left">
+        <div class="text__subject menu--left" style="display: none;">
           <p class="markdown">'${MENULEFT}'</p>
         </div>
       </div>
-      <div class="text__container text__container--right">
-        <div class="text__body" style="display: none;">
+      <div class="menu text__container text__container--right">
+        <div class="text__body menu--right" style="display: none;">
           <p class="markdown">'${MENURIGHT}'</p>
         </div>
       </div>
     </div>' > ${FILENAME}.html
 
-      git log --tags="${TAGS}" --pretty=tformat:'
+      git log --no-walk --tags="${TAGS}" --pretty=tformat:'
     <div class="text text--list" id="text-%h">
         <button class="btn hash">%h</button>
         <div class="text__container text__container--left">
