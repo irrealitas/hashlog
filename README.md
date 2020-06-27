@@ -80,4 +80,4 @@ Examples of *hashlog*:
 
 ## License
 
-MIT License - see [LICENSE.md](LICENSE.md).
+MIT License - see [LICENSE](LICENSE.md).
