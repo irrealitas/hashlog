@@ -306,8 +306,12 @@ hr {
   padding: 0 0 3em 1em;
 }
 
+.text__title {
+  font-weight: bold;
+}
+
 .text__link {
-  display: inline;
+  display: block;
 }
 
 .menu--left {

@@ -1,49 +1,82 @@
 ﻿# Hashlog
 
-*Hashlog* is a weird blog engine powered by Git. It is an experiment with paratext content.
+*Hashlog* is a blog engine powered by Git and its commit messages.
 
-It is based on Git log and commit messages. It inverts the posting process with all the contents in the Git commentaries.
+It inverts the posting process. All the contents are in the Git commentaries (e.g. the commit message subject or body). It is based on the options of the `git log` command to display the commit messages in a web page.
 
-## Dependencies
+This tool is the result of a [literary experiment](https://www.cyberpoetique.org/gitterature/) with paratext.
+
+## Use
+
+*Hashlog* uses:
 
 * [Bash](https://www.gnu.org/software/bash/)
 * [Git](https://git-scm.com)
 
-*Hashlog* uses these JavaScript libraries:
+It also uses these JavaScript libraries:
 
-* [CommonMark.js](https://github.com/commonmark/commonmark.js) to render markdown in commit messages
+* [CommonMark.js](https://github.com/commonmark/commonmark.js) to render the Markdown syntax of the commit messages
 * [Baffle](https://github.com/camwiegert/baffle) for the menu effect
+
+---
+
+You can write the commit messages with Markdown and use the CommonMark's syntax, like `**bold**`, `*italic*` or `![image](src)`, that will be rendered by CommonMark.js parser.
+
+The displayed posts are the commit messages which are tagged (with a specific tag defined in the variables of the file [hashlog.sh](hashlog.sh)).
+
+To tag an old commit you can use the GitHub interface or the terminal command: `git tag -a TAGNAME.VESIONNUMBER ABBREVIATEDHASH` (e.g. `git tag -a log.2020.06.23 6bfcc13`). To discover the abbreviated commit hash (with the date and the subject of the commit) you can also use this command `git log --pretty=format'%h %cd %s'`.
+
+To explore the tagging possibilities, there is the [Git tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) page of the Git documentation.
 
 ## Variables
 
 In the file `hashlog.sh`, you have some Bash variables to manage this blog engine:
 
-* `MEXT`: file extension (in the directory `text`)
-* `USER`: username for SSH (only for `make ssh`)
-* `SRC`: the files for the final webpage
-* `NAME`: the name of the final webpage (by default: the name of the current directory)
-* `HOST`: the remote host for SSH (only for `make ssh`)
-* `DIR`: the remote directory for SSH (only for `make ssh`)
-
+* `MENULEFT`: the text that will be displayed in the left part of the menu (in bold).
+* `MENURIGHT`: the text that will be displayed in the right part of the menu (in italic); it is by default the command `cat content/surface.md` that displays the content of this file (in our example, we change the sentence in this file at each commit).
+* `TAGS`: the name of the tags that will be used to choose which commit messages to display (by default `log.*` for tags like `log.42` or `log.2020.06.23`)
+* `REPO`: the URL of the Git repository (useful for the posts links)
 
 ## Modifications
 
-git tag
+You can also modify an old post by [rewriting Git history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
 
-To modify an old commit message
+If you want to modify the template and if you use Gulp, you can work with the files in the folder `src`. If you're not working with Gulp, you can work directly with the files in `dist`.
 
-If you want to modify the template and if you use Gulp, you can work with the files in the folder `src`; everything will be compressed (images and code).
+## Deployment
 
-If you're not working with Gulp, you can work directly with the files in `template`. The CSS (the same for JS) is compressed in `template`, so you should copy and paste the files of `template/src/css/import/` in `racines.css` and modify the code as you wish.
+The command `./hashlog.sh html` will render the blog with all its posts.
 
-## GitLab Pages or GitHub Pages
+The `gulp` command will also render the blog and a live server.
 
-You can host this *Racines* page on Gitlab Pages or GitHub Pages with the power of GitLab CI (see [.gitlab-ci.yml](.gitlab-ci.yml)) or GitHub Actions (see [main.yml](.github/workflows/main.yml)) ; it will run Pandoc automatically. You can consenquently edit your *Racines* page directly on GitLab or GitHub by modifying the files in the `text` folder.
+Everything can work locally, and you can copy the `dist` folder to a web server. It's also possible to clone this repository and work directly with the GitHub interface.
+
+You can also work with GitLab pages with something like this in a `.gitlab-ci.yml` file:
+
+```
+image: alpine:latest
+
+pages:
+  script:
+  - apk update
+  - apk add git curl alpine-sdk autoconf automake bash build-base
+  - mkdir public
+  - cp -r dist/{css,fonts,img,js} public/
+  - ./hashlog.sh html
+  - cp -r dist/index.html public/index.html
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+```
 
 ## Examples
 
-* or with [GitHub Pages](https://irrealitas.github.io/racines/)
-* the *Racines* of our friends [Abrüpt](https://abrupt.ch/www)
+Examples of *hashlog*:
+
+* with [GitHub Pages](https://irrealitas.github.io/hashlog/)
+* [La Gittérature](https://antilivre.gitlab.io/gitterature/), a literary experiment for [Abrüpt](https://abrupt.ch/)
 
 ## License
 

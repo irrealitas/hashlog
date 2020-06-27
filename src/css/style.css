@@ -273,6 +273,10 @@ hr {
   padding: 0 0 3em 1em;
 }
 
+.text__title {
+  font-weight: bold;
+}
+
 @media screen and (min-width: 55em) { /* 880 px */
   .text__body {
     padding: 0 3em 3em 0;
@@ -284,7 +288,7 @@ hr {
 }
 
 .text__link {
-  display: inline;
+  display: block;
 }
 
 .menu--left {
