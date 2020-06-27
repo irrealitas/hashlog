@@ -1,1 +1,1 @@
-Very well, indeed, father. And you father?
+Chips, picking chips off rocky thumbnail, chips.
