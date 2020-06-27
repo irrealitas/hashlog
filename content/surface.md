@@ -1,1 +1,1 @@
-Hoopsa, boyaboy, hoopsa! Hoopsa, boyaboy, hoopsa! Hoopsa, boyaboy, hoopsa.
+Where's the great light?
