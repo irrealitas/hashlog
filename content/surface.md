@@ -1,1 +1,1 @@
-Bloo... Me? No.
+Smile. Smile Cranly’s smile.
