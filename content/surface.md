@@ -1,1 +1,1 @@
-Chips, picking chips off rocky thumbnail, chips.
+Devil a much, says I.
