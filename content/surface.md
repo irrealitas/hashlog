@@ -1,1 +1,1 @@
-Smile. Smile Cranly’s smile.
+Very well, indeed, father. And you father?
