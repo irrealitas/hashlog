@@ -78,6 +78,10 @@ Examples of *hashlog*:
 * with [GitHub Pages](https://irrealitas.github.io/hashlog/)
 * [La Gittérature](https://antilivre.gitlab.io/gitterature/), a literary experiment for [Abrüpt](https://abrupt.ch/)
 
+## Influence
+
+This tool was influenced by the ideas of [@loup-brun](https://github.com/loup-brun) and [@antoinentl](https://github.com/antoinentl) ([Pièce 01](https://scolaire.loupbrun.ca/piece01/) and [Cheminement textuel](https://www.quaternum.net/2019/12/09/cheminement-textuel/)). It enters into the concept of [Gittérature](https://framagit.org/gitterature/gitterature).
+
 ## License
 
 MIT License - see [LICENSE](LICENSE.md).
